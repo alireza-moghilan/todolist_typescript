@@ -1,0 +1,14 @@
+html,body {
+    margin:0
+}
+
+p {margin: 0;}
+
+form {
+    background-color: #d4d4d4;
+    box-shadow: 10px 10px 0 #444;
+}
+
+.complete {
+    filter: blur(1.5px);
+}
