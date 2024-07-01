@@ -28,7 +28,7 @@ btnSubmit?.addEventListener('click', (e) => {
     // prevent
     e.preventDefault();
     // if
-    if (titleInp?.value === undefined || descriptionInp?.value === undefined) return
+    if (!titleInp?.value || !descriptionInp?.value || titleInp?.value=== '' || descriptionInp?.value=== '') return alert('Please fill in the fields');
     // create-object-data
     const data: TypeData = {
         id: todoList.length + 1,
@@ -92,7 +92,7 @@ function addTodo(items: TypeData): void {
     // Complete btn
     div.id = `card-${items.id}`;
     let btnComplete: any;
-    if (items.completed === false) {
+    if (!items.completed) {
         btnComplete = document.createElement('button')
         btnComplete.classList.add('btn', 'btn-success', 'btn-delete', 'px-5', 'ms-2');
         btnComplete.append('Complete');
@@ -107,7 +107,7 @@ function addTodo(items: TypeData): void {
 // Getting data when loading
 function getData(): TypeData[] {
     const data = localStorage.getItem('data');
-    if (data === null) {
+    if (!data) {
         return []
     } else {
         return JSON.parse(data)

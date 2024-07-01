@@ -17,8 +17,8 @@ btnSubmit === null || btnSubmit === void 0 ? void 0 : btnSubmit.addEventListener
     // prevent
     e.preventDefault();
     // if
-    if ((titleInp === null || titleInp === void 0 ? void 0 : titleInp.value) === undefined || (descriptionInp === null || descriptionInp === void 0 ? void 0 : descriptionInp.value) === undefined)
-        return;
+    if (!(titleInp === null || titleInp === void 0 ? void 0 : titleInp.value) || !(descriptionInp === null || descriptionInp === void 0 ? void 0 : descriptionInp.value) || (titleInp === null || titleInp === void 0 ? void 0 : titleInp.value) === '' || (descriptionInp === null || descriptionInp === void 0 ? void 0 : descriptionInp.value) === '')
+        return alert('Please fill in the fields');
     // create-object-data
     const data = {
         id: todoList.length + 1,
@@ -68,7 +68,7 @@ function addTodo(items) {
     // Complete btn
     div.id = `card-${items.id}`;
     let btnComplete;
-    if (items.completed === false) {
+    if (!items.completed) {
         btnComplete = document.createElement('button');
         btnComplete.classList.add('btn', 'btn-success', 'btn-delete', 'px-5', 'ms-2');
         btnComplete.append('Complete');
@@ -83,7 +83,7 @@ function addTodo(items) {
 // Getting data when loading
 function getData() {
     const data = localStorage.getItem('data');
-    if (data === null) {
+    if (!data) {
         return [];
     }
     else {
