@@ -18,7 +18,7 @@ type TypeData = {
 let todoList: TypeData[];
 
 // Onload (get data)
-window.onload = () => {
+window.onload = ():void => {
     todoList = getData();
     todoList.forEach(addTodo);
 }
@@ -97,9 +97,10 @@ function addTodo(items: TypeData): void {
         btnComplete.classList.add('btn', 'btn-success', 'btn-delete', 'px-5', 'ms-2');
         btnComplete.append('Complete');
         btnComplete.onclick = () => todoComplete(items);
-        footer.append(btnComplete)
-    }else {
-    document.querySelector(`#card-${items.id}`)?.classList.add('complete');
+        footer.append(btnComplete);
+    } else {
+        // add class 
+        document.querySelector(`#card-${items.id}`)?.classList.add('complete');
     }
 }
 
@@ -141,7 +142,7 @@ function todoDelete(id: number): void {
 }
 
 // Comleted
-function todoComplete(items: TypeData):void {
+function todoComplete(items: TypeData): void {
     let item: TypeData = items;
     todoList.forEach(index => {
         if (index.id == item.id) {
@@ -162,7 +163,7 @@ function todoComplete(items: TypeData):void {
     addTodo(item);
     document.querySelector(`#card-${item.id}`)?.classList.add('complete');
 
-    
+
     // Add to the localStorage
     localStorage.setItem('data', JSON.stringify(todoList));
 }

@@ -76,6 +76,7 @@ function addTodo(items) {
         footer.append(btnComplete);
     }
     else {
+        // add class 
         (_a = document.querySelector(`#card-${items.id}`)) === null || _a === void 0 ? void 0 : _a.classList.add('complete');
     }
 }
